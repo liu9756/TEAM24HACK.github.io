@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFC Home Page</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+        .research-content {
+            padding: 50px;
+            text-align: left;
+        }
+    </style>
+    
+    <style>
+      
+        @import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
+
+     
+        .button-container {
+            text-align: center;
+        }
+
+        
+        .cartoon-button {
+            font-family: 'Patrick Hand', cursive;
+            border: 2px solid #000;
+            padding: 15px 30px;
+            background-color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 24px; 
+        }
+
+       
+        .cartoon-button:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+    
+    <style>
+     
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; 
+        }
+
+       
+        .content {
+            position: relative;
+            z-index: 1; 
+            text-align: center;
+            padding: 50px;
+        }
+
+       
+        h1 {
+            color: #fff;
+            font-size: 36px;
+        }
+
+        p {
+            color: #fff;
+            font-size: 18px;
+        }
+    </style>
+    <style>
+  .bg-image {
+    background-image: url('background.jpg');
+    background-size: cover; /* 图片大小适应元素大小 */
+    width: 100%; /* 设置元素宽度 */
+    height: 300px; /* 设置元素高度 */
+  }
+</style>
+     <style>
+        .styled-text {
+            font-size: 6rem;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+     
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+</head>
+<body>
+
+   <video autoplay loop muted>
+        <source src="background.mp4" type="video/mp4">
+     
+    </video>
+<header>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="data.html">PERSONAL DATA</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="ability.html">ABILITY DIMENSION</a>
+            <a href="explore.html">EXPLORE</a>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="button-container">
+        
+            <a href="healthRecord.html" class="cartoon-button">Health Record</a>
+            <a href="healthTracking.html" class="cartoon-button">Health Tracking</a>
+            <a href="healthAdvisor.html" class="cartoon-button">Health Advisor</a>
+        </div>
+    </main>
+<div class="gradient-background">
+        <h1 class="styled-text">Nutrition Factory</h1>
+    </div>
+ 
+    <script src="script.js"></script>
+
+</body>
+</html>

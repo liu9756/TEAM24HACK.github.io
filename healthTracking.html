@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Health Tracking</title>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+        .research-content {
+            padding: 50px;
+            text-align: left;
+        }
+    </style>
+    
+    <style>
+      
+        @import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
+
+     
+        .button-container {
+            text-align: center;
+        }
+
+        
+        .cartoon-button {
+            font-family: 'Patrick Hand', cursive;
+            border: 2px solid #000;
+            padding: 15px 30px;
+            background-color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 24px; 
+        }
+
+       
+        .cartoon-button:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+    
+     <style>
+     
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; 
+        }
+
+       
+        .content {
+            position: relative;
+            z-index: 1; 
+            text-align: center;
+            padding: 50px;
+        }
+
+       
+        h1 {
+            color: #fff;
+            font-size: 36px;
+        }
+
+        p {
+            color: #fff;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<video autoplay loop muted>
+        <source src="background.mp4" type="video/mp4">
+     
+    </video>
+<header>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="data.html">PERSONAL DATA</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="ability.html">ABILITY DIMENSION</a>
+            <a href="explore.html">EXPLORE</a>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="button-container">
+        
+            <a href="healthRecord.html" class="cartoon-button">Health Record</a>
+            <a href="healthTracking.html" class="cartoon-button">Health Tracking</a>
+            <a href="healthAdvisor.html" class="cartoon-button">Health Advisor</a>
+        </div>        
+    </main>
+    <body>
+       <center>   
+            <p onLoad="printData();"> </p>  
+            <h1 id="BMIData"> </h1>          
+            <p id="BMIText"> </p>
+            <p> </p>
+            <p> </p>
+            <!-- h2 is black, may be change to white -->
+            <h1 id="HRData"> </h1> 
+            <p id="HRText"> </p>
+            <p id="HRText2"> </p>
+    </body>
+        <script>
+        function calculateBMI(){
+	        	var heightInMeter = localStorage.getItem("height")/100.0;
+	        	localStorage.setItem("BMI",localStorage.getItem("weight")/Math.pow(2,heightInMeter)); 
+        	
+        	return localStorage.getItem("BMI");
+        }
+        
+        function zeroToTwo(){   
+        	document.getElementById("HRText").innerHTML = ('Typical heart rate is around 100 to 160 beats per minute');
+        	if(localStorage.getItem("heartRate") < 100){
+        		document.getElementById("HRText2").innerHTML = ('Lower than 100 beats per minute may be considered as bradycardia');
+        	}else if(localStorage.getItem("heartRate") > 160){
+                document.getElementById("HRText2").innerHTML = ('Higher than 160 beats per minute may be considered as tachycardia');
+            }
+        }
+        
+        function three2Five(){
+        	document.getElementById("HRText").innerHTML = ('Typical heart rate is around 80 to 120 beats per minute');
+        	if(localStorage.getItem("heartRate") < 80){
+                document.getElementById("HRText2").innerHTML = ('Lower than 80 beats per minute may be considered as bradycardia');
+            }else if(localStorage.getItem("heartRate") > 120){
+                document.getElementById("HRText2").innerHTML = ('Higher than 120 beats per minute may be considered as tachycardia');
+            }
+        }
+        
+        function six2Twelve(){
+        	document.getElementById("HRText").innerHTML = ('Typical heart rate is around 70 to 100 beats per minute');
+        	if(localStorage.getItem("heartRate") < 70){
+                document.getElementById("HRText2").innerHTML = ('Lower than 70 beats per minute may be considered as bradycardia');
+            }else if(localStorage.getItem("heartRate") > 100){
+                document.getElementById("HRText2").innerHTML = ('Higher than 100 beats per minute may be considered as tachycardia');
+            }
+        }
+        
+        function thirteen2Twenty(){
+        	document.getElementById("HRText").innerHTML = ('Typical heart rate is around 60 to 100 beats per minute');
+            if(localStorage.getItem("heartRate") < 70){
+                document.getElementById("HRText2").innerHTML = ('Lower than 60 beats per minute may be considered as bradycardia');
+            }else if(localStorage.getItem("heartRate") > 100){
+                document.getElementById("HRText2").innerHTML = ('Higher than 100 beats per minute may be considered as tachycardia');
+            }
+        }
+        
+        
+        function between18and65(){
+        	document.getElementById("HRText").innerHTML = ('Typical heart rate is around 60 to 100 beats per minute');
+            if(localStorage.getItem("heartRate") < 60){
+                document.getElementById("HRText2").innerHTML = ('Lower than 60 beats per minute may be considered as bradycardia');
+            }else if(localStorage.getItem("heartRate") > 100){
+                document.getElementById("HRText2").innerHTML = ('Higher than 100 beats per minute may be considered as tachycardia');
+            }
+        }
+        
+        function older(){
+        	document.getElementById("HRText").innerHTML = ('Typical heart rate is around 60 to 100 beats per minute');
+            if(localStorage.getItem("heartRate") < 60){
+                document.getElementById("HRText2").innerHTML = ('Lower than 60 beats per minute may be considered as bradycardia');
+            }else if(localStorage.getItem("heartRate") > 100){
+                document.getElementById("HRText2").innerHTML = ('Higher than 100 beats per minute may be considered as tachycardia');
+            }
+        }
+        function printData(){
+        	var BMI = calculateBMI();
+        	   
+	        	if(BMI < 18.5){
+	        		document.getElementById("BMIData").innerHTML = ('Your BMI is '+ (Math.round(localStorage.getItem("BMI")*100)/100).toFixed(2));
+	        		document.getElementById("BMIText").innerHTML = ('You are underweight.');
+	        	}else if (BMI < 24.9){
+                    document.getElementById("BMIData").innerHTML = ('Your BMI is '+ (Math.round(localStorage.getItem("BMI")*100)/100).toFixed(2));
+	        		document.getElementById("BMIText").innerHTML = ('You are normal weight.');
+	        	}else if (BMI < 29.9){
+                    document.getElementById("BMIData").innerHTML = ('Your BMI is '+ (Math.round(localStorage.getItem("BMI")*100)/100).toFixed(2));
+	        		document.getElementById("BMIText").innerHTML = ('You are overweight.');
+	        	}else{
+                    document.getElementById("BMIData").innerHTML = ('Your BMI is '+ (Math.round(localStorage.getItem("BMI")*100)/100).toFixed(2));
+	        		document.getElementById("BMIText").innerHTML = ('You are obese.');
+	        	}
+	        	
+	        	if(localStorage.getItem("age")< 3) {
+	        		document.getElementById("HRData").innerHTML = ('You heart rate is ' + localStorage.getItem("heartRate")+ 'beats per minute');	
+	        		zeroToTwo();
+	        	}else if(localStorage.getItem("age")< 6){
+	        		document.getElementById("HRData").innerHTML = ('You heart rate is ' + localStorage.getItem("heartRate")+ 'beats per minute');
+	        		three2Five();
+	        	}else if(localStorage.getItem("age")< 13){
+	        		document.getElementById("HRData").innerHTML = ('You heart rate is ' + localStorage.getItem("heartRate")+ 'beats per minute');
+                    six2Twelve();
+	        	}else if(localStorage.getItem("age")< 20){
+	        		document.getElementById("HRData").innerHTML = ('You heart rate is ' + localStorage.getItem("heartRate")+ 'beats per minute');
+                    thirteen2Twenty();
+	        	}else if(localStorage.getItem("age")< 66){
+	        		document.getElementById("HRData").innerHTML = ('You heart rate is ' + localStorage.getItem("heartRate")+ 'beats per minute');
+	        		between18and65();
+	        	}else{
+	        		document.getElementById("HRData").innerHTML = ('You heart rate is ' + localStorage.getItem("heartRate")+ 'beats per minute');
+	        		older();
+	        	}
+               	
+        } 
+        printData();
+    </script>
+    
+</body>
+</html>

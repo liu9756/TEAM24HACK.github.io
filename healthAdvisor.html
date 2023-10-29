@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Health Advisor</title>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+        .research-content {
+            padding: 50px;
+            text-align: left;
+        }
+    </style>
+    
+    <style>
+      
+        @import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
+
+     
+        .button-container {
+            text-align: center;
+        }
+
+        
+        .cartoon-button {
+            font-family: 'Patrick Hand', cursive;
+            border: 2px solid #000;
+            padding: 15px 30px;
+            background-color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 24px; 
+        }
+
+       
+        .cartoon-button:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <style>
+        .scrollable {
+            height: 735px; /* 设置滚动区域的高度 */
+            overflow-y: auto; /* 启用垂直滚动条 */
+            border: 1px solid #ccc; /* 可选：添加边框样式 */
+        }
+    </style>
+     <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            background-color: #f2f2f2;
+            color: #000;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+    
+    <style>
+        .center-text {
+             text-align: center; /* 将文本水平居中 */
+  margin: 0 auto; /* 将元素水平居中 */
+  width: 50%; /* 可根据需要调整宽度 */
+            
+        }
+    </style>
+     <style>
+     
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; 
+        }
+
+       
+        .content {
+            position: relative;
+            z-index: 1; 
+            text-align: center;
+            padding: 50px;
+        }
+
+       
+        h1 {
+            color: #fff;
+            font-size: 36px;
+        }
+
+        p {
+            color: #fff;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="scrollable" class="center-text">
+<video autoplay loop muted>
+        <source src="background.mp4" type="video/mp4">
+     
+    </video>
+    
+<header>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="data.html">PERSONAL DATA</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="ability.html">ABILITY DIMENSION</a>
+            <a href="explore.html">EXPLORE</a>
+        </nav>
+    </header>
+    <main>
+        <div class="button-container">
+        
+            <a href="healthRecord.html" class="cartoon-button">Health Record</a>
+            <a href="healthTracking.html" class="cartoon-button">Health Tracking</a>
+            <a href="healthAdvisor.html" class="cartoon-button">Health Advisor</a>
+        </div>
+    </main>
+    <div class=center-text>
+    <h1>Hi! I'm your health advisor!</h1>
+    </div>
+    <p id="pressure"></p>
+    <script>
+    var height = localStorage.getItem("height");
+    var weight = localStorage.getItem("weight");
+    var age = localStorage.getItem("age");
+    var bloodPressure = localStorage.getItem("bloodPressure");
+    var heartRate = localStorage.getItem("heartRate");
+    
+    if(bloodPressure<80){
+    	document.write("<div class="+"center-text"+">");
+    	
+    	document.write("<p>Your Blood pressure is "+bloodPressure+"mmHG</p>");
+    	document.write("<p>The health of your blood pressure: Ideal blood pressure !</p>");
+    	document.write("<p>Here's a weekly list of things to eat generated for you: </p>");
+    	document.write("<h1>Weekly Meal Plan</h1>");
+    	document.write("</div>");
+    	
+    	document.write("<table>");
+    	document.write(" <tr>");
+    	document.write(" <th>Date</th>");
+    	document.write("  <th>Breakfast</th>");
+    	document.write("   <th>Lunch</th>");
+    	document.write("  <th>Dinner</th>");
+    	document.write("   <th>Estimated Calories</th>");
+    	document.write("    </tr>");
+    	document.write("    <tr>");
+    	document.write("    <td>Monday</td>");
+    	document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+    	document.write("    <td>Chicken breast sandwiches, salads</td>");
+    	document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+    	document.write("    <td>1,250</td>");
+    	document.write("    </tr>");
+        document.write("    <tr>");
+               
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Tuesday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Grilled fish, steamed vegetables, whole wheat bread</td>");
+        document.write("    <td>Tofu, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,150</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Wednesday</td>");
+        document.write("    <td>Whole wheat bread, peanut butter, oranges</td>");
+        document.write("    <td>Fish tacos, salad, yogurt</td>");
+        document.write("    <td>Lean beef, grilled vegetables, whole wheat bread</td>");
+        document.write("    <td>1,350</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Thursday</td>");
+        document.write("    <td>Oatmeal, bananas, low-fat milk</td>");
+        document.write("    <td>Mexican chicken burritos, salad, yogurt</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,170</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Friday</td>");
+        document.write("    <td>Oatmeal, oranges, low-fat milk</td>");
+        document.write("    <td>Grilled chicken thighs, brown rice, steamed vegetables</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,020</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Saturday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,130</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Sunday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+            <!-- 添加其他日期的数据 -->
+            document.write("<table>");
+    }else if(bloodPressure>=80&&bloodPressure<=89){
+    	document.write("<div class="+"center-text"+">");
+    	document.write("<p>Your Blood pressure is "+bloodPressure+"mmHG</p>");
+        document.write("<p>The health of your blood pressure: Normal blood pressure !</p>");
+        document.write("<p>Here's a weekly list of things to eat generated for you: </p>");
+        document.write("<h1>Weekly Meal Plan</h1>");
+        document.write("</div>");
+        document.write("<table>");
+        document.write(" <tr>");
+        document.write(" <th>Date</th>");
+        document.write("  <th>Breakfast</th>");
+        document.write("   <th>Lunch</th>");
+        document.write("  <th>Dinner</th>");
+        document.write("   <th>Estimated Calories</th>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Monday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+               
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Tuesday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Grilled fish, steamed vegetables, whole wheat bread</td>");
+        document.write("    <td>Tofu, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,150</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Wednesday</td>");
+        document.write("    <td>Whole wheat bread, peanut butter, oranges</td>");
+        document.write("    <td>Fish tacos, salad, yogurt</td>");
+        document.write("    <td>Lean beef, grilled vegetables, whole wheat bread</td>");
+        document.write("    <td>1,350</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Thursday</td>");
+        document.write("    <td>Oatmeal, bananas, low-fat milk</td>");
+        document.write("    <td>Mexican chicken burritos, salad, yogurt</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,170</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Friday</td>");
+        document.write("    <td>Oatmeal, oranges, low-fat milk</td>");
+        document.write("    <td>Grilled chicken thighs, brown rice, steamed vegetables</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,020</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Saturday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,130</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Sunday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+            <!-- 添加其他日期的数据 -->
+            document.write("<table>");
+    }else if(bloodPressure>=90&&bloodPressure<99){
+    	document.write("<div class="+"center-text"+">");
+    	document.write("<p>Your Blood pressure is "+bloodPressure+"mmHG</p>");
+        document.write("<p>The health of your blood pressure: High normal blood pressure !</p>");
+        document.write("<p>Here's a weekly list of things to eat generated for you: </p>");
+        document.write("<h1>Weekly Meal Plan</h1>");
+        document.write("</div>");
+        document.write("<table>");
+        document.write(" <tr>");
+        document.write(" <th>Date</th>");
+        document.write("  <th>Breakfast</th>");
+        document.write("   <th>Lunch</th>");
+        document.write("  <th>Dinner</th>");
+        document.write("   <th>Estimated Calories</th>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Monday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+               
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Tuesday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Grilled fish, steamed vegetables, whole wheat bread</td>");
+        document.write("    <td>Tofu, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,150</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Wednesday</td>");
+        document.write("    <td>Whole wheat bread, peanut butter, oranges</td>");
+        document.write("    <td>Fish tacos, salad, yogurt</td>");
+        document.write("    <td>Lean beef, grilled vegetables, whole wheat bread</td>");
+        document.write("    <td>1,350</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Thursday</td>");
+        document.write("    <td>Oatmeal, bananas, low-fat milk</td>");
+        document.write("    <td>Mexican chicken burritos, salad, yogurt</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,170</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Friday</td>");
+        document.write("    <td>Oatmeal, oranges, low-fat milk</td>");
+        document.write("    <td>Grilled chicken thighs, brown rice, steamed vegetables</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,020</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Saturday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,130</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Sunday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+            <!-- 添加其他日期的数据 -->
+            document.write("<table>");
+    }else if(bloodPressure>=100&&bloodPressure<109){
+    	document.write("<div class="+"center-text"+">");
+    	document.write("<p>Your Blood pressure is "+bloodPressure+"mmHG</p>");
+        document.write("<p>The health of your blood pressure: Mild hypertension !</p>");
+        document.write("<p>Here's a weekly list of things to eat generated for you: </p>");
+        document.write("<h1>Weekly Meal Plan</h1>");
+        document.write("</div>");
+        document.write("<table>");
+        document.write(" <tr>");
+        document.write(" <th>Date</th>");
+        document.write("  <th>Breakfast</th>");
+        document.write("   <th>Lunch</th>");
+        document.write("  <th>Dinner</th>");
+        document.write("   <th>Estimated Calories</th>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Monday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+               
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Tuesday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Grilled fish, steamed vegetables, whole wheat bread</td>");
+        document.write("    <td>Tofu, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,150</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Wednesday</td>");
+        document.write("    <td>Whole wheat bread, peanut butter, oranges</td>");
+        document.write("    <td>Fish tacos, salad, yogurt</td>");
+        document.write("    <td>Lean beef, grilled vegetables, whole wheat bread</td>");
+        document.write("    <td>1,350</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Thursday</td>");
+        document.write("    <td>Oatmeal, bananas, low-fat milk</td>");
+        document.write("    <td>Mexican chicken burritos, salad, yogurt</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,170</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Friday</td>");
+        document.write("    <td>Oatmeal, oranges, low-fat milk</td>");
+        document.write("    <td>Grilled chicken thighs, brown rice, steamed vegetables</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,020</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Saturday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,130</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Sunday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+            <!-- 添加其他日期的数据 -->
+            document.write("<table>");
+    }else{
+    	document.write("<div class="+"center-text"+">");
+    	document.write("<p>Your Blood pressure is "+bloodPressure+"mmHG</p>");
+        document.write("<p>The health of your blood pressure: Moderate hypertension !</p>");
+        document.write("<p>Here's a weekly list of things to eat generated for you: </p>");
+        document.write("<h1>Weekly Meal Plan</h1>");
+        document.write("</div>");
+        document.write("<table>");
+        document.write(" <tr>");
+        document.write(" <th>Date</th>");
+        document.write("  <th>Breakfast</th>");
+        document.write("   <th>Lunch</th>");
+        document.write("  <th>Dinner</th>");
+        document.write("   <th>Estimated Calories</th>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Monday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+               
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Tuesday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Grilled fish, steamed vegetables, whole wheat bread</td>");
+        document.write("    <td>Tofu, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,150</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Wednesday</td>");
+        document.write("    <td>Whole wheat bread, peanut butter, oranges</td>");
+        document.write("    <td>Fish tacos, salad, yogurt</td>");
+        document.write("    <td>Lean beef, grilled vegetables, whole wheat bread</td>");
+        document.write("    <td>1,350</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Thursday</td>");
+        document.write("    <td>Oatmeal, bananas, low-fat milk</td>");
+        document.write("    <td>Mexican chicken burritos, salad, yogurt</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,170</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Friday</td>");
+        document.write("    <td>Oatmeal, oranges, low-fat milk</td>");
+        document.write("    <td>Grilled chicken thighs, brown rice, steamed vegetables</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,020</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Saturday</td>");
+        document.write("    <td>Yogurt, strawberries, whole wheat toast</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Tofu, steamed vegetables, brown rice</td>");
+        document.write("    <td>1,130</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+        
+        document.write("    </tr>");
+        document.write("    <tr>");
+        document.write("    <td>Sunday</td>");
+        document.write("    <td>Oatmeal, milk, fresh fruit</td>");
+        document.write("    <td>Chicken breast sandwiches, salads</td>");
+        document.write("    <td>Grilled salmon, grilled vegetables, brown rice</td>");
+        document.write("    <td>1,250</td>");
+        document.write("    </tr>");
+        document.write("    <tr>");
+            <!-- 添加其他日期的数据 -->
+            document.write("<table>");
+    }
+    
+    var maxRate = 220-age;
+    document.write("<div class="+"center-text"+">");
+    document.write("<p>Your Measured Heart Rate is "+heartRate+" BPM</p>");
+    document.write("<p>Your maxmum Heart Rate is "+maxRate+" BPM</p>");
+    
+    var difference = Math.abs(maxRate-heartRate);
+    document.write("<p>Your difference of Heart Rate is "+difference+" BPM</p>");
+    document.write("<p>Based on your difference heart rate, we suggest you do following sports: </p>");
+    document.write("</div>");
+    if(difference<=5){
+    	document.write("<div class="+"center-text"+">");
+    	document.write("<h1>Weekly Sports Plan</h1>");
+    	document.write("</div>");
+        document.write("<table>");
+        document.write(" <th>Exercise intensity</th>");
+        document.write("  <th>Type1</th>");
+        document.write("   <th>Type2</th>");
+        document.write("  <th>Type3</th>");
+    	 document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>Low-impact exercise</td>");
+         document.write("    <td>Walking: Taking a light walk every day can help maintain basic cardiovascular health.</td>");
+         document.write("    <td>Cycling: Slow cycling is a low-intensity aerobic exercise that puts less stress on the joints.</td>");
+         document.write("    <td>Swimming: Swimming is also a low-intensity, full-body exercise that is joint-friendly</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>Moderate-intensity exercise</td>");
+         document.write("    <td>Mountain biking: Gentler terrain allows for better aerobic exercise</td>");
+         document.write("    <td>Combat gymnastics: Exercises coordination and body movement</td>");
+         document.write("    <td>Swimming: Swimming is also a low-intensity, full-body exercise that is joint-friendly</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>High-intensity exercise</td>");
+         document.write("    <td>Mountain climbing: Add fun to the camping experience and exercise your physical and mental health</td>");
+         document.write("    <td>Combat gymnastics: Exercises coordination and body movement</td>");
+         document.write("    <td>Squats, push-ups, and pull-ups: These bodyweight exercises can help strengthen muscles and increase heart rate.</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("</table>");
+    }else if(difference>5&&difference<=10){
+    	document.write("<div class="+"center-text"+">");
+    	document.write("<h1>Weekly Sports Plan</h1>");
+    	document.write("</div>");
+        document.write("<table>");
+        document.write(" <th>Exercise intensity</th>");
+        document.write("  <th>Type1</th>");
+        document.write("   <th>Type2</th>");
+        document.write("  <th>Type3</th>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>Low-impact exercise</td>");
+         document.write("    <td>Walking: Taking a light walk every day can help maintain basic cardiovascular health.</td>");
+         document.write("    <td>Cycling: Slow cycling is a low-intensity aerobic exercise that puts less stress on the joints.</td>");
+         document.write("    <td>Swimming: Swimming is also a low-intensity, full-body exercise that is joint-friendly</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>Moderate-intensity exercise</td>");
+         document.write("    <td>Mountain biking: Gentler terrain allows for better aerobic exercise</td>");
+         document.write("    <td>Combat gymnastics: Exercises coordination and body movement</td>");
+         document.write("    <td>Swimming: Swimming is also a low-intensity, full-body exercise that is joint-friendly</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>High-intensity exercise</td>");
+         document.write("    <td>None(Take a Rest!)</td>");
+         document.write("    <td>Combat gymnastics: Exercises coordination and body movement</td>");
+         document.write("    <td>Squats, push-ups, and pull-ups: These bodyweight exercises can help strengthen muscles and increase heart rate.</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("</table>");
+    	
+    }else if(difference>10&&difference<20){
+    	document.write("<div class="+"center-text"+">");
+    	document.write("<h1>Weekly Sports Plan</h1>");
+    	document.write("</div>");
+        document.write("<table>");
+        document.write(" <th>Exercise intensity</th>");
+        document.write("  <th>Type1</th>");
+        document.write("   <th>Type2</th>");
+        document.write("  <th>Type3</th>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>Low-impact exercise</td>");
+         document.write("    <td>Walking: Taking a light walk every day can help maintain basic cardiovascular health.</td>");
+         document.write("    <td>Cycling: Slow cycling is a low-intensity aerobic exercise that puts less stress on the joints.</td>");
+         document.write("    <td>Swimming: Swimming is also a low-intensity, full-body exercise that is joint-friendly</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>Moderate-intensity exercise</td>");
+         document.write("    <td>Mountain biking: Gentler terrain allows for better aerobic exercise</td>");
+         document.write("    <td>None(Take a Rest!)</td>");
+         document.write("    <td>Swimming: Swimming is also a low-intensity, full-body exercise that is joint-friendly</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>High-intensity exercise</td>");
+         document.write("    <td>None(Take a Rest!)</td>");
+         document.write("    <td>Combat gymnastics: Exercises coordination and body movement</td>");
+         document.write("    <td>None(Take a Rest!)</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("</table>");
+    }else{
+    	document.write("<div class="+"center-text"+">");
+    	document.write("<h1>Weekly Sports Plan</h1>");
+    	document.write("</div>");
+        document.write("<table>");
+        document.write(" <th>Exercise intensity</th>");
+        document.write("  <th>Type1</th>");
+        document.write("   <th>Type2</th>");
+        document.write("  <th>Type3</th>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>Low-impact exercise</td>");
+         document.write("    <td>Walking: Taking a light walk every day can help maintain basic cardiovascular health.</td>");
+         document.write("    <td>None(Take a Rest!).</td>");
+         document.write("    <td>Swimming: Swimming is also a low-intensity, full-body exercise that is joint-friendly</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         
+         document.write("    </tr>");
+         document.write("    <tr>");
+         document.write("    <td>Moderate-intensity exercise</td>");
+         document.write("    <td>Mountain biking: Gentler terrain allows for better aerobic exercise</td>");
+         document.write("    <td>Combat gymnastics: Exercises coordination and body movement</td>");
+         document.write("    <td>None(Take a Rest!)</td>");
+         document.write("    </tr>");
+         document.write("    <tr>");
+         
+       
+         document.write("</table>");
+    }
+    
+    </script>
+    </div>
+</body>
+</html>

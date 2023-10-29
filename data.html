@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Personal Data</title>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+        .research-content {
+            padding: 50px;
+            text-align: left;
+        }
+    </style>
+    
+     <style>
+     
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; 
+        }
+
+       
+        .content {
+            position: relative;
+            z-index: 1; 
+            text-align: center;
+            padding: 50px;
+        }
+
+       
+        h1 {
+            color: #fff;
+            font-size: 36px;
+        }
+
+        p {
+            color: #fff;
+            font-size: 18px;
+        }
+    </style>
+    
+    <style>
+      
+        @import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
+
+     
+        .button-container {
+            text-align: center;
+        }
+
+        
+        .cartoon-button {
+            font-family: 'Patrick Hand', cursive;
+            border: 2px solid #000;
+            padding: 15px 30px;
+            background-color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 24px; 
+        }
+
+       
+        .cartoon-button:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <style>
+       
+        h1 {
+            font-size: 24px; 
+            text-align: center;
+        }
+
+        
+        table {
+            width: 60%; 
+            margin: 0 auto; 
+            color: white; 
+        }
+
+        table, th, td {
+            border: 1px solid white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+       
+        #pieChartContainer {
+               width: 300px;
+            height: 300px;
+           position: relative; 
+    top: 50px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    </style>
+    
+</head>
+<body>
+<video autoplay loop muted>
+        <source src="background.mp4" type="video/mp4">
+     
+    </video>
+<header>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="data.html">PERSONAL DATA</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="ability.html">ABILITY DIMENSION</a>
+            <a href="explore.html">EXPLORE</a>
+        </nav>
+    </header>
+    <main>
+        <div class="button-container">
+        
+            <a href="healthRecord.html" class="cartoon-button">Health Record</a>
+            <a href="healthTracking.html" class="cartoon-button">Health Tracking</a>
+            <a href="healthAdvisor.html" class="cartoon-button">Health Advisor</a>
+        </div>
+    </main>
+    
+    <h1>Your recent input results</h1>
+
+    <table>
+        <tr>
+            <th>Height（cm）</th>
+            <td id="displayHeight"></td>
+        </tr>
+        <tr>
+            <th>Weight（kg）</th>
+            <td id="displayWeight"></td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td id="displayAge"></td>
+        </tr>
+        <tr>
+            <th>Blood Pressure（mmHg）</th>
+            <td id="displayBloodPressure"></td>
+        </tr>
+          <tr>
+            <th>Heart Rate（BPM）</th>
+            <td id="displayheartRate"></td>
+        </tr>
+    </table>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <div id="pieChartContainer">
+        <canvas id="pieChart"></canvas>
+    </div>
+    <script>
+       
+        const height = localStorage.getItem("height");
+        const weight = localStorage.getItem("weight");
+        const age = localStorage.getItem("age");
+        const bloodPressure = localStorage.getItem("bloodPressure");
+        const heartRate = localStorage.getItem("heartRate");
+
+       
+        document.getElementById("displayHeight").textContent = height;
+        document.getElementById("displayWeight").textContent = weight;
+        document.getElementById("displayAge").textContent = age;
+        document.getElementById("displayBloodPressure").textContent = bloodPressure;
+        document.getElementById("displayheartRate").textContent = heartRate;
+    
+        
+        const pieChartCanvas = document.getElementById("pieChart");
+        const ctx = pieChartCanvas.getContext("2d");
+
+        const data = {
+            labels: ["Height (cm)", "Weight (kg)", "Age", "Blood Pressure (mmHg)","heartRate (BPM)"],
+            datasets: [{
+                data: [height, weight, age, bloodPressure, heartRate],
+                backgroundColor: ["red", "blue", "yellow", "green","orange"]
+            }]
+        };
+
+        const pieChart = new Chart(ctx, {
+            type: "pie",
+            data: data
+        });
+        </script>
+</body>
+</html>
